@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="appiumTechnical" parallel="tests" thread-count="2" >
+
+    <listeners>
+        <listener class-name="appium.com.listeners.ExtentTestListener"/>
+    </listeners>
+
+    <parameter name="appName" value="DragSortDemos.apk"/>
+
+    <test name="Run on Android Version 7.0">
+        <parameter name="portNumber" value="4724"/>
+        <parameter name="platformName" value="Android"/>
+        <parameter name="platformVersion" value="7"/>
+        <classes>
+            <class name="testcases.Demo.Demo"/>
+        </classes>
+    </test>
+
+    <test name="Run on Android Version 11.0">
+        <parameter name="portNumber" value="4725"/>
+        <parameter name="platformName" value="Android"/>
+        <parameter name="platformVersion" value="11"/>
+        <classes>
+            <class name="testcases.Demo.Demo"/>
+        </classes>
+    </test>
+
+</suite>
