@@ -1,6 +1,7 @@
 package appium.com.actions.commons;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.ElementOption;
@@ -51,16 +52,19 @@ public class BasePage {
         By by;
         if(locatorType.startsWith("xpath=") || locatorType.startsWith("Xpath=") || locatorType.startsWith("XPATH=")) {
             locatorType = locatorType.substring(6);
-            by = By.xpath(locatorType);
+            by = MobileBy.xpath(locatorType);
         } else if(locatorType.startsWith("name=") || locatorType.startsWith("Name=") || locatorType.startsWith("NAME=")) {
             locatorType = locatorType.substring(5);
-            by = By.name(locatorType);
+            by = MobileBy.name(locatorType);
         } else if(locatorType.startsWith("id=") || locatorType.startsWith("Id=") || locatorType.startsWith("ID=")) {
             locatorType = locatorType.substring(3);
-            by = By.id(locatorType);
+            by = MobileBy.id(locatorType);
         } else if(locatorType.startsWith("className=") || locatorType.startsWith("ClassName=") || locatorType.startsWith("CLASSNAME=")) {
             locatorType = locatorType.substring(10);
-            by = By.className(locatorType);
+            by = MobileBy.className(locatorType);
+        } else if(locatorType.startsWith("AccessibilityId=") ) {
+            locatorType = locatorType.substring(16);
+            by = MobileBy.AccessibilityId(locatorType);
         } else {
             throw new RuntimeException("Locator Type Is Not Support");
         }
